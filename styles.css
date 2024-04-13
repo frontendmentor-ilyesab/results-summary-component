@@ -1,0 +1,342 @@
+/* Font Face Rules */
+
+/* Load the static font files in case variable fonts are not supported in the current browser */
+@supports not (font-variation-settings: normal) {
+  @font-face {
+    font-family: "Hanken Grotesk";
+    src: url("./assets/fonts/static/HankenGrotesk-Medium.ttf");
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: "Hanken Grotesk";
+    src: url("./assets/fonts/static/HankenGrotesk-Bold.ttf");
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: "Hanken Grotesk";
+    src: url("./assets/fonts/static/HankenGrotesk-ExtraBold.ttf");
+    font-weight: 800;
+  }
+}
+
+/* If it's supported load the variable font */
+@supports (font-variation-settings: normal) {
+  @font-face {
+    font-family: "Hanken Grotesk";
+    src: url("./assets/fonts/HankenGrotesk-VariableFont_wght.ttf") format(truetype);
+    font-weight: 500 800;
+  }
+}
+
+/* CSS Reset */
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+    2. Remove default margin and padding
+  */
+* {
+  margin: 0;
+  padding: 0;
+}
+/*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+    5. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+    6. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+    7. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+
+/* CSS Custom properties */
+:root {
+    /* Primary Colors */
+    --light-red: 0, 100%, 67%;
+    --orange-yellow: 39, 100%, 56%;
+    --green-teal: 166, 100%, 37%;
+    --cobalt-blue: 234, 85%, 45%;
+
+    --light-red-color: hsl(0, 100%, 67%);
+    --orange-yellow-color: hsl(39, 100%, 56%);
+    --green-teal-color: hsl(166, 100%, 37%);
+    --cobalt-blue-color: hsl(234, 85%, 45%);
+
+    /* Gradients Colors */
+    --light-slate-blue: 252, 100%, 67%;
+    --light-royal-blue: 241, 81%, 54%;
+    --violet-blue: 256, 72%, 46%, 1;
+    --persian-blue: 241, 72%, 46%, 0;
+
+    --light-slate-blue-color: hsl(252, 100%, 67%);
+    --light-royal-blue-color: hsl(241, 81%, 54%);
+    --violet-blue-color: hsl(256, 72%, 46%, 1);
+    --persian-blue-color: hsl(241, 72%, 46%, 0);
+
+    /* Gradients */
+    --background-gradient: linear-gradient(to bottom, var(--light-slate-blue-color), var(--light-royal-blue-color));
+    --circle-gradient: linear-gradient(to bottom, var(--violet-blue-color), var(--persian-blue-color));
+
+    /* Neutral Colors */
+    --white: 0, 0%, 100%;
+    --pale-blue: 221, 100%, 96%;
+    --light-lavender: 241, 100%, 89%;
+    --dark-gray-blue: 224, 30%, 27%;
+
+    --white-color: hsl(0, 0%, 100%);
+    --pale-blue-color: hsl(221, 100%, 96%);
+    --light-lavender-color: hsl(241, 100%, 89%);
+    --dark-gray-blue-color: hsl(224, 30%, 27%);
+}
+
+/* Styling from TOP to BOTTOM */
+html {
+    color: var(--light-lavender-color);
+    font-family: "Hanken Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.125rem;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+main {
+    --section-result-radius: 2rem;
+    display: grid;
+    grid-template-areas: "result"
+    "summary";
+    max-inline-size: 700px;
+}
+
+section.result {
+    --section-result--gap: 1.2rem;
+    background-image: var(--background-gradient);
+    border-bottom-left-radius: var(--section-result-radius);
+    border-bottom-right-radius: var(--section-result-radius);
+    text-align: center;
+    display: grid;
+    place-items: center;
+    gap: var(--section-result--gap);
+    padding: 1rem 3rem 2rem;
+    grid-area: result;
+}
+
+.result__title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.result__score {
+    --circle-padding: 1.2rem;
+    --circle-width-height: 100px;
+    background-image: var(--circle-gradient);
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    place-items: center;
+    gap: 0.5rem;
+    padding: var(--circle-padding);
+    line-height: 1;
+    width: calc(var(--circle-width-height) + 2 * var(--circle-padding));
+    height: calc(var(--circle-width-height) + 2 * var(--circle-padding));
+}
+
+.result__score__points {
+    color: var(--white-color);
+    font-size: clamp(3rem, 2.5rem + 2vw, 4rem);
+    font-weight: 800;
+}
+
+.result__score__total {
+    color: hsla(var(--light-lavender), 0.5);
+    font-size: 0.9rem;
+}
+
+.result__info {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.result__info__rating {
+    color: var(--white-color);
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.result__info__desc {
+    color: hsla(var(--light-lavender), 0.9);
+    font-size: 0.9rem;
+}
+
+section.summary {
+    display: grid;
+    gap: 1rem;
+    padding: 1.2rem 1.75rem;
+    grid-area: summary;
+}
+
+.summary__title {
+    color: var(--dark-gray-blue-color);
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-block-end: 0.25rem;
+}
+
+.reaction {
+    --summary-component-color-code: var(--light-red);
+    --summary-component-color: var(--light-red-color);
+}
+
+.memory {
+    --summary-component-color-code: var(--orange-yellow);
+    --summary-component-color: var(--orange-yellow-color);
+}
+
+.verbal {
+    --summary-component-color-code: var(--green-teal);
+    --summary-component-color: var(--green-teal-color);
+}
+
+.visual {
+    --summary-component-color-code: var(--cobalt-blue);
+    --summary-component-color: var(--cobalt-blue-color);
+}
+
+.summary__component {
+    background-color: hsla(var(--summary-component-color-code), 0.1);
+    border-radius: 0.5rem;
+    color: var(--summary-component-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;   
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.summary__component header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.summary__component h3 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.summary__component__score {
+    color: hsla(var(--dark-gray-blue), 0.5);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.summary__component__score__points {
+    color: var(--dark-gray-blue-color);
+}
+
+button {
+    background: var(--dark-gray-blue-color);
+    border: none;
+    border-radius: 2rem;
+    color: var(--white-color);
+    padding: 1rem 3rem;
+    font-weight: 700;
+    margin-block: 0.5rem;
+    cursor: pointer;
+}
+
+/* Interactive States */
+button:is(:hover, :focus, :active) {
+    background: var(--background-gradient);
+}
+
+/* Media Queries */
+@media screen and (min-width: 992px) {
+    main {
+        grid-template-areas: "result summary";
+        grid-template-columns: repeat(2, 1fr);
+        border-top-right-radius: var(--section-result-radius);
+        border-bottom-right-radius: var(--section-result-radius);
+        box-shadow: 5px 20px 30px 10px var(--pale-blue-color);
+    }
+    section.result {
+        --section-result--gap: 1.75rem;
+        border-radius: var(--section-result-radius);
+        padding: 2rem 2.5rem 3rem;
+    }
+    .result__title {
+        font-size: 1.2rem;
+    }
+    .result__score {
+        --circle-padding: 2.75rem;
+    }
+    .result__score__total {
+        font-size: 1rem;
+    }
+    .result__info {
+        gap: 0.5rem;
+    }
+    .result__info__rating {
+        font-size: 1.75rem;
+    }
+    .result__info__desc {
+        font-size: 1rem;
+    }
+    section.summary {
+        padding: 2rem;
+    }
+    .summary__component {
+        font-size: 1rem;
+    }
+    button {
+        padding-block: 0.7rem;
+        margin-block-start: 1rem;
+    }
+}
