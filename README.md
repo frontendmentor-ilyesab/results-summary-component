@@ -38,8 +38,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Solution URL](https://www.frontendmentor.io/solutions/results-summary-component-H0TZ8k8FcX)
+- Live Site URL: [Live Site URL](https://frontendmentor-ilyesab.github.io/results-summary-component/)
 
 ## My process
 

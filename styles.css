@@ -292,6 +292,17 @@ button {
     cursor: pointer;
 }
 
+/* Generic Classes */
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
 /* Interactive States */
 button:is(:hover, :focus, :active) {
     background: var(--background-gradient);
